@@ -8,7 +8,7 @@ Instrucciones para ejecutar (local):
    python -m pip install --upgrade pip
    pip install -r requirements.txt
 
-2. Configurar base de datos (por defecto sqlite). No subir db.sqlite3 al repo.
+2. Configurar base de datos (por defecto sqlite). No subi db.sqlite3 al repositorio!!
 
 3. Crear migraciones y migrar:
    python manage.py makemigrations
