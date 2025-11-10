@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Confirmar borrado</h2>
+<p>¿Confirma borrar la página "{{ object.titulo }}"?</p>
+<form method="post">{% csrf_token %}
+  <button type="submit">Sí, borrar</button>
+  <a href="{% url 'pages:list' %}">Cancelar</a>
+</form>
+{% endblock %}

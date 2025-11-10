@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Páginas</h1>
+
+<form method="get">
+  <input type="text" name="q" placeholder="Buscar..." value="{{ request.GET.q }}">
+  <button type="submit">Buscar</button>
+</form>
+
+{% if pages %}
+  <ul>
+  {% for p in pages %}
+    <li>
+      <h3>{{ p.titulo }}</h3>
+      <p>{{ p.subtitulo }}</p>
+      <p>Fecha: {{ p.fecha }} | Autor: {{ p.autor.get_full_name }}</p>
+      <a href="{% url 'pages:detail' p.pk %}">Leer más</a>
+      {% if user.is_authenticated and p.autor == user %}
+        | <a href="{% url 'pages:edit' p.pk %}">Editar</a>
+        | <a href="{% url 'pages:delete' p.pk %}">Borrar</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No hay páginas aún.</p>
+{% endif %}
+
+{% endblock %}
